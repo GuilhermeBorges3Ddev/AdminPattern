@@ -16,6 +16,14 @@ var admin = document.querySelector("#exampleInputAdmin");
 //Foreach used to get all fields of the form in a better way
 var fields = document.querySelectorAll("#form-user-create [name]");
 
+//Using conditions in if-else to put filter into the array called fields
 fields.forEach(function(field, index){
-    console.log(field.id, field.name, field.value, field.checked, index);
+    if(field.name == "gender"){
+        if(field.checked){
+            console.log("SIM", field);
+        }
+    }else{
+            console.log("NÃO");
+    }
+    //console.log(field.id, field.name, field.value, field.checked, index);
 });
