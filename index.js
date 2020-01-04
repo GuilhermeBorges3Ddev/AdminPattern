@@ -1,9 +1,6 @@
 
-//Getting form itens and using variables to set some values and styles
-
+//Getting form itens and using variables to set some values, styles or whethever
 var nome = document.querySelector("#exampleInputName");
-nome.value = "Guilherme";
-nome.style.color = "blue";
 
 //We've two genders tow be selected into the form, but whe need only the checked:
 var gender  = document.querySelector("#form-user-create [name = gender]:checked");
@@ -15,3 +12,10 @@ var email = document.querySelector("#exampleInputEmail");
 var password = document.querySelector("#exampleInputPassword");
 var photo = document.querySelector("#exampleInputFile");
 var admin = document.querySelector("#exampleInputAdmin");
+
+//Foreach used to get all fields of the form in a better way
+var fields = document.querySelectorAll("#form-user-create [name]");
+
+fields.forEach(function(field, index){
+    console.log(field.name);
+});
