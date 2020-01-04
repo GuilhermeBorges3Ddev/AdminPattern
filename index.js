@@ -5,8 +5,13 @@ var nome = document.querySelector("#exampleInputName");
 nome.value = "Guilherme";
 nome.style.color = "blue";
 
-var gender = document.querySelector("#exampleInputGenderM");
-var dateBirth = document.querySelector("#exampleInputBirth");
+//We've two genders tow be selected into the form, but whe need only the checked:
+var gender  = document.querySelector("#form-user-create [name = gender]:checked");
+
+//The other selected itens of the form follow the same logic used before
+var birth = document.querySelector("#exampleInputBirth");
 var country = document.querySelector("#exampleInputCountry");
-var mail = document.querySelector("#exampleInputEmail1");
-var password = document.querySelector("#exampleInputPassword1")
+var email = document.querySelector("#exampleInputEmail");
+var password = document.querySelector("#exampleInputPassword");
+var photo = document.querySelector("#exampleInputFile");
+var admin = document.querySelector("#exampleInputAdmin");
