@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Usuários - Hcode Treinamentos</title>
+  <title>Users Control</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -21,9 +21,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">HCODE</span>
+      <span class="logo-mini">ADM Pattern</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">HCODE</span>
+      <span class="logo-lg">ADM Pattern</span>
     </a>
 
     <!-- Header Navbar -->
@@ -42,13 +42,12 @@
               <!-- The user image in the navbar-->
               <img src="dist/img/avatar5.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Fulano Junior</span>
+              <span class="hidden-xs">Francis Junior</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
-
                 <p>
                   Fulano Junior - Web Developer
                   <small>Membro desde Abr. 2018</small>
@@ -150,48 +149,8 @@
                     <th>Ações</th>
                   </tr>
                 </thead>
-                <tbody>
-
-                  <tr>
-                    <td><img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm"></td>
-                    <td>Fulano</td>
-                    <td>fulano@hcode.com.br</td>
-                    <td>Sim</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm">
-                    </td>
-                    <td>Fulano</td>
-                    <td>fulano@hcode.com.br</td>
-                    <td>Sim</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm">
-                    </td>
-                    <td>Fulano</td>
-                    <td>fulano@hcode.com.br</td>
-                    <td>Sim</td>
-                    <td>02/04/2018</td>
-                    <td>
-                      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
-                      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
-                    </td>
-                  </tr>
-                  
+                <tbody id="table-users">
+                  <!-- <tr> element created in JS function addLine -->
                 </tbody>
               </table>
             </div>
@@ -244,18 +203,18 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputName">Nome</label>
-                  <input type="text" class="form-control" id="exampleInputName" placeholder="Digite o nome do usuário" name="name">
+                  <input type="text" class="form-control" id="exampleInputName" placeholder="Digite o nome do usuário" name="name" value="">
                 </div>
                 <div class="form-group">
                   <label>Gênero</label>
                   <div class="radio">
                     <label for="exampleInputGenderM">
-                      <input type="radio" id="exampleInputGenderM" name="gender" checked>
+                      <input type="radio" id="exampleInputGenderM" name="gender" value="M">
                       Masculino</label>
                   </div>
                   <div class="radio">
                     <label for="exampleInputGenderF">
-                      <input type="radio" id="exampleInputGenderF" name="gender">
+                      <input type="radio" id="exampleInputGenderF" name="gender"value="F">
                       Feminino</label>
                   </div>
                 </div>
@@ -562,6 +521,8 @@
 </script>
 -->
 <!--            Another way to load JS inside the HTML code-->
+<script src="models/User.js"></script>
+<script src="controllers/UserController.js"></script>
 <script src="index.js"></script>
 
 <!--            Important commands
