@@ -17,7 +17,8 @@ class UserController {
     //This method returns directly an object instead of the full JSON mounted
     getValues(){
         let user = {};
-        this.formEl.elements.forEach(function(field, index){
+        //Spreading an object to array 
+        [...this.formEl.elements].forEach(function(field, index){
             if(field.name == "gender"){
                 if(field.checked){
                     user[field.name] = field.value;
