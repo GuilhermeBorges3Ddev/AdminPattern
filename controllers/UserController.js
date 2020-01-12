@@ -9,9 +9,30 @@ class UserController {
     //When form send button is clicked the refresh default event is disabled
     onSubmit(){
         this.formEl.addEventListener("submit", event => {
-            event.preventDefault();
-            this.addLine(this.getValues());
+            event.preventDefault();     
+            //Put the source path on the variable values
+            let values = this.getValues();
+            values.photo = "";
+            //First we catch the photo path, and after add the full line info
+            this.getPhoto((content) => {
+                values.photo = content;
+                this.addLine(values);
+            });  
         });
+    }
+
+    getPhoto(callback){
+       let fileReader = new FileReader(); 
+       let elements = [...this.formEl.elements].filter(item => {
+           if(item.name === 'photo'){
+            return item;
+           } 
+       });
+       let file = elements[0].files[0];
+       fileReader.onload = () => {
+         callback(fileReader.result);
+       };
+       fileReader.readAsDataURL(file);
     }
 
     //This method returns directly an object instead of the full JSON mounted
@@ -44,7 +65,7 @@ class UserController {
         this.tableEl.innerHTML = `
             <tr>
                 <td>
-                    <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm">
+                    <img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm">
                 </td>
                 <td>${dataUser.name}</td>
                 <td>${dataUser.email}</td>
