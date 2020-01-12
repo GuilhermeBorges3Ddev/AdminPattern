@@ -12,27 +12,38 @@ class UserController {
             event.preventDefault();     
             //Put the source path on the variable values
             let values = this.getValues();
-            values.photo = "";
-            //First we catch the photo path, and after add the full line info
-            this.getPhoto((content) => {
-                values.photo = content;
-                this.addLine(values);
-            });  
+            //Working previously with the promise
+            this.getValues().then(
+                (content) => {
+                    //First we catch the photo path, and after add the full line info
+                    values.photo = content;
+                    this.addLine(values); 
+                },
+                (e) => {
+                    console.error(e);
+                }
+            );   
         });
     }
 
-    getPhoto(callback){
-       let fileReader = new FileReader(); 
-       let elements = [...this.formEl.elements].filter(item => {
-           if(item.name === 'photo'){
-            return item;
-           } 
-       });
-       let file = elements[0].files[0];
-       fileReader.onload = () => {
-         callback(fileReader.result);
-       };
-       fileReader.readAsDataURL(file);
+    //The promise used here on getPhoto() is threated in onSubmit() above
+    getPhoto(){
+       return new Promise((resolve, reject) => {
+        let fileReader = new FileReader(); 
+        let elements = [...this.formEl.elements].filter(item => {
+            if(item.name === 'photo'){
+             return item;
+            } 
+        });
+        let file = elements[0].files[0];
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+        fileReader.onerror = (e) => {
+            reject(e);
+        }
+        fileReader.readAsDataURL(file);
+       })
     }
 
     //This method returns directly an object instead of the full JSON mounted
