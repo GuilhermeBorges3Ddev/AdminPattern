@@ -9,7 +9,10 @@ class UserController {
     //When form send button is clicked the refresh default event is disabled
     onSubmit(){
         this.formEl.addEventListener("submit", event => {
-            event.preventDefault();     
+            event.preventDefault(); 
+            //Turning the submit form button disabled by default
+            let btn = this.formEl.querySelector("[type=submit]");
+            btn.disabled = true;    
             //Put the source path on the variable values
             let values = this.getValues();
             //Working previously with the promise
@@ -17,7 +20,10 @@ class UserController {
                 (content) => {
                     //First we catch the photo path, and after add the full line info
                     values.photo = content;
-                    this.addLine(values); 
+                    this.addLine(values);
+                    //Cleanning the later form values and transforming the btn able again 
+                    this.formEl.reset()
+                    btn.disabled = false; 
                 },
                 (e) => {
                     console.error(e);
