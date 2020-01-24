@@ -9,38 +9,49 @@ class User {
         this._password = password;
         this._photo = photo;
         this._admin = admin;
+        //Attribute who operates the date 
+        this._register = new Date();
     }
 
-    //Private attributes have been modifyed by getters and setters
+    //Private attributes have been searched by the getters
+    get register(){
+        return this._register;
+    }
+
     get name(){
-        this._name;
+        return this._name;
     }
 
     get gender(){
-        this._gender;
+        return this._gender;
     }
 
     get birth(){
-        this._birth;
+        return this._birth;
     }
 
     get country(){
-        this._country;
+        return this._country;
     }
 
     get email(){
-        this._email;
+        return this._email;
     }
 
     get password(){
-        this._password;
+        return this._password;
     }
 
     get photo(){
-        this._photo;
+        return this._photo;
     }
 
     get admin(){
-        this._admin;
+        return this._admin;
+    }
+
+    //Setters modify the same attributes what was presented in the getter methods
+    set photo(value){
+        this._photo = value;
     }
 }
